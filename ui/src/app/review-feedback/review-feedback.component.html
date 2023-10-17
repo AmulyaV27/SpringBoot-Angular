@@ -1,0 +1,71 @@
+<form
+  [formGroup]="feedbackForm"
+  class="feedback-form"
+  (ngSubmit)="onFeedback()"
+>
+  <mat-form-field style="width: 400px">
+    <mat-label>rating</mat-label>
+    <input
+      matInput
+      placeholder="rating"
+      formControlName="rating"
+      type="number"
+      style="width: 400px"
+    />
+  </mat-form-field>
+  <mat-form-field style="width: 400px">
+    <mat-label>feedback</mat-label>
+    <textarea
+      matInput
+      placeholder="Enter your feedback here"
+      rows="5"
+      formControlName="feedback"
+      style="width: 400px"
+    ></textarea>
+  </mat-form-field>
+  <div class="block" style="width: 400px; text-align: center">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="feedbackForm.invalid"
+      style="width: 400px"
+    >
+      Submit Feedback
+    </button>
+  </div>
+</form>
+<h3 *ngIf="userReviews.length > 0">Your Feedback History</h3>
+<mat-table
+  [dataSource]="dataSource"
+  class="mat-elevation-z8"
+  *ngIf="userReviews.length > 0"
+>
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="comment">
+    <mat-header-cell *matHeaderCellDef> Comment </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.comment }} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="ratingValue">
+    <mat-header-cell *matHeaderCellDef> Rating </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.ratingValue }} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="createdDate">
+    <mat-header-cell *matHeaderCellDef> Feedback submitted On </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.createdDate | date }}
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
+<mat-paginator
+  *ngIf="dataSource.data.length>0"
+  #paginator
+  [pageSizeOptions]="[5, 10, 15, 20, 25]"
+  showFirstLastButtons
+></mat-paginator>

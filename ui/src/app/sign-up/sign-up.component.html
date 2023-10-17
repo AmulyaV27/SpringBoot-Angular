@@ -1,0 +1,28 @@
+<div class="sign-up-container">
+  <form [formGroup]="signupForm" class="sign-up-form" (ngSubmit)="onSignup()">
+    <mat-form-field>
+      <mat-label>username</mat-label>
+      <input matInput placeholder="username" formControlName="username" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>password</mat-label>
+      <input
+        matInput
+        placeholder="password"
+        type="password"
+        formControlName="password"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Role</mat-label>
+      <mat-select formControlName="role">
+        <mat-option value="ADMIN">Admin</mat-option>
+        <mat-option value="USER">User</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="block">
+        <button mat-raised-button color="primary" type="submit" [disabled]="signupForm.invalid">Sign Up</button>
+        <button mat-raised-button color="primary" type="button" [routerLink]="['/login']" class="button-login">Login</button>
+    </div>
+  </form>
+</div>

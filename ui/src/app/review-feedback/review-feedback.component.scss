@@ -1,0 +1,46 @@
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 400px; 
+  padding: 10px;
+}
+.mat-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mat-header-cell,
+.mat-cell {
+  padding: 8px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.mat-header-cell {
+  text-align: center;
+  font-weight: bold;
+}
+
+.mat-row:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+/* Paginator */
+
+.mat-paginator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-paginator-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mat-paginator-page-size {
+  margin-right: 8px;
+}
